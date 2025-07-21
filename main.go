@@ -15,12 +15,12 @@ type HiArgs struct {
 
 func greetTool(ctx context.Context, ss *mcp.ServerSession, params *mcp.CallToolParamsFor[HiArgs]) (*mcp.CallToolResult, error) {
 	name := strings.TrimSpace(params.Arguments.Name)
-    if name == "" {
-    	return nil, fmt.Errorf("name parameter cannot be empty")
-    }
+	if name == "" {
+		return nil, fmt.Errorf("name parameter cannot be empty")
+	}
 	return &mcp.CallToolResult{
 		Content: []mcp.Content{
-			&mcp.TextContent{	
+			&mcp.TextContent{
 				Text: fmt.Sprintf("Moin moin %s!", name),
 			},
 		},
