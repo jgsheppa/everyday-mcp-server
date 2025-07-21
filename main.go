@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"strings"
 
 	mcp "github.com/modelcontextprotocol/go-sdk/mcp"
 )
@@ -13,7 +14,10 @@ type HiArgs struct {
 }
 
 func greetTool(ctx context.Context, ss *mcp.ServerSession, params *mcp.CallToolParamsFor[HiArgs]) (*mcp.CallToolResult, error) {
-	name := params.Arguments.Name
+	name := strings.TrimSpace(params.Arguments.Name)
+    if name == "" {
+    	return nil, fmt.Errorf("name parameter cannot be empty")
+    }
 	return &mcp.CallToolResult{
 		Content: []mcp.Content{
 			&mcp.TextContent{	
@@ -31,7 +35,7 @@ func main() {
 
 	greetToolDef := &mcp.Tool{
 		Name:        "moin",
-		Description: "Greets a person by name",
+		Description: "Greets a person with the German \"Moin moin\" by name",
 	}
 
 	mcp.AddTool(server, greetToolDef, greetTool)
