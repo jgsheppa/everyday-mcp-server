@@ -10,7 +10,7 @@ import (
 )
 
 type HiArgs struct {
-	Name string `json:"name" jsonschema:"the name to say hi to"`
+	Name string `json:"name" jsonschema:"the name to say moin moin to"`
 }
 
 func greetTool(ctx context.Context, ss *mcp.ServerSession, params *mcp.CallToolParamsFor[HiArgs]) (*mcp.CallToolResult, error) {
@@ -35,7 +35,7 @@ func main() {
 
 	greetToolDef := &mcp.Tool{
 		Name:        "moin",
-		Description: "Greets a person with the German \"Moin moin\" by name",
+		Description: "Says \"Moin moin\" to someone by name",
 	}
 
 	mcp.AddTool(server, greetToolDef, greetTool)
