@@ -13,8 +13,8 @@ type GermanGreetingArgs struct {
 }
 
 func GermanGreeting(
-	ctx context.Context,
-	ss *mcp.ServerSession,
+	_ context.Context,
+	_ *mcp.ServerSession,
 	params *mcp.CallToolParamsFor[GermanGreetingArgs],
 ) (*mcp.CallToolResult, error) {
 	name := strings.TrimSpace(params.Arguments.Name)
