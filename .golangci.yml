@@ -37,11 +37,6 @@ linters:
       locale: US
   exclusions:
     generated: lax
-    presets:
-      - comments
-      - common-false-positives
-      - legacy
-      - std-error-handling
     rules:
       - linters:
           - lll
