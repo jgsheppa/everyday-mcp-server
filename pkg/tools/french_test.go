@@ -4,8 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/jgsheppa/everyday-mcp-server/pkg/tools"
 	mcp "github.com/modelcontextprotocol/go-sdk/mcp"
+
+	"github.com/jgsheppa/everyday-mcp-server/pkg/tools"
 )
 
 func TestFrenchGreetingTool(t *testing.T) {
@@ -16,7 +17,7 @@ func TestFrenchGreetingTool(t *testing.T) {
 
 	frenchGreetingConfig := tools.NewFrenchGreetingTool()
 
-	result, err := frenchGreetingConfig.ToolCall(ctx, nil, params)
+	result, err := frenchGreetingConfig.Call(ctx, nil, params)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
@@ -35,7 +36,7 @@ func TestFrenchGreetingToolEmptyName(t *testing.T) {
 
 	frenchGreetingConfig := tools.NewFrenchGreetingTool()
 
-	_, err := frenchGreetingConfig.ToolCall(ctx, nil, params)
+	_, err := frenchGreetingConfig.Call(ctx, nil, params)
 	if err == nil {
 		t.Error("expected error for empty name")
 	}

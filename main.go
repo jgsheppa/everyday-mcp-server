@@ -4,8 +4,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/jgsheppa/everyday-mcp-server/pkg/tools"
 	mcp "github.com/modelcontextprotocol/go-sdk/mcp"
+
+	"github.com/jgsheppa/everyday-mcp-server/pkg/tools"
 )
 
 func main() {

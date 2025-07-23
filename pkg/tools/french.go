@@ -12,7 +12,11 @@ type FrenchGreetingArgs struct {
 	Name string `json:"name" jsonschema:"the name to say bonjour to"`
 }
 
-func FrenchGreetingTool(ctx context.Context, ss *mcp.ServerSession, params *mcp.CallToolParamsFor[FrenchGreetingArgs]) (*mcp.CallToolResult, error) {
+func FrenchGreeting(
+	ctx context.Context,
+	ss *mcp.ServerSession,
+	params *mcp.CallToolParamsFor[FrenchGreetingArgs],
+) (*mcp.CallToolResult, error) {
 	name := strings.TrimSpace(params.Arguments.Name)
 	if name == "" {
 		return nil, fmt.Errorf("name parameter cannot be empty")
@@ -30,11 +34,11 @@ func NewFrenchGreetingTool() *Config[FrenchGreetingArgs] {
 	return &Config[FrenchGreetingArgs]{Definition: &mcp.Tool{
 		Name:        "French Greeting",
 		Description: "Says \"Bonjour\" to someone by name"},
-		ToolCall: FrenchGreetingTool,
+		Call: FrenchGreeting,
 	}
 }
 
 func AddFrenchTool(server *mcp.Server) {
 	tool := NewFrenchGreetingTool()
-	mcp.AddTool(server, tool.Definition, tool.ToolCall)
+	mcp.AddTool(server, tool.Definition, tool.Call)
 }
