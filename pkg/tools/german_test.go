@@ -40,4 +40,3 @@ func TestGermanGreetingToolEmptyName(t *testing.T) {
 		t.Error("expected error for empty name")
 	}
 }
-

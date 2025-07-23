@@ -38,4 +38,3 @@ func AddFrenchTool(server *mcp.Server) {
 	tool := NewFrenchGreetingTool()
 	mcp.AddTool(server, tool.Definition, tool.ToolCall)
 }
-
