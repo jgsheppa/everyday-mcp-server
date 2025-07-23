@@ -2,7 +2,6 @@ version: "2"
 run:
   go: "1.24"
 linters:
-  default: none
   enable:
     - bodyclose
     - copyloopvar
@@ -23,18 +22,6 @@ linters:
     - unparam
     - unused
     - whitespace
-  settings:
-    dupl:
-      threshold: 100
-    goconst:
-      min-len: 2
-      min-occurrences: 2
-    gocyclo:
-      min-complexity: 15
-    lll:
-      line-length: 140
-    misspell:
-      locale: US
   exclusions:
     generated: lax
     rules:
@@ -42,20 +29,6 @@ linters:
           - lll
           - mnd
         path: _test\.go
-    paths:
-      - third_party$
-      - builtin$
-      - examples$
-formatters:
-  enable:
-    - gofmt
-    - goimports
-  settings:
-    goimports:
-      local-prefixes:
-        - github.com/jgsheppa/everyday-mcp-server
-  exclusions:
-    generated: lax
     paths:
       - third_party$
       - builtin$
