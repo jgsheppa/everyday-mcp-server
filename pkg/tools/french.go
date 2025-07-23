@@ -31,9 +31,11 @@ func FrenchGreeting(
 }
 
 func NewFrenchGreetingTool() *Config[FrenchGreetingArgs] {
-	return &Config[FrenchGreetingArgs]{Definition: &mcp.Tool{
-		Name:        "French Greeting",
-		Description: "Says \"Bonjour\" to someone by name"},
+	return &Config[FrenchGreetingArgs]{
+		Definition: &mcp.Tool{
+			Name:        "french_greeting",
+			Description: "Says \"Bonjour\" to someone by name",
+		},
 		Call: FrenchGreeting,
 	}
 }

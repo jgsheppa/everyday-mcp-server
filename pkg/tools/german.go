@@ -31,9 +31,11 @@ func GermanGreeting(
 }
 
 func NewGermanGreetingTool() *Config[GermanGreetingArgs] {
-	return &Config[GermanGreetingArgs]{Definition: &mcp.Tool{
-		Name:        "German greeting",
-		Description: "Says \"Moin moin\" to someone by name"},
+	return &Config[GermanGreetingArgs]{
+		Definition: &mcp.Tool{
+			Name:        "german_greeting",
+			Description: "Says \"Moin moin\" to someone by name",
+		},
 		Call: GermanGreeting,
 	}
 }

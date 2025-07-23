@@ -12,7 +12,7 @@ import (
 func main() {
 	server := mcp.NewServer(&mcp.Implementation{
 		Name:    "everyday",
-		Version: "1.0.0",
+		Version: "1.1.0",
 	}, nil)
 
 	tools.AddFrenchTool(server)
