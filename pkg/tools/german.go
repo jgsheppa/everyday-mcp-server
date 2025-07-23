@@ -3,6 +3,7 @@ package tools
 import (
 	"context"
 	"fmt"
+	"log"
 	"strings"
 
 	mcp "github.com/modelcontextprotocol/go-sdk/mcp"
@@ -31,12 +32,18 @@ func GermanGreeting(
 }
 
 func NewGermanGreetingTool() *Config[GermanGreetingArgs] {
+	definition := mcp.Tool{
+		Name:        "german_greeting",
+		Description: "Says \"Moin moin\" to someone by name",
+	}
+	err := ValidateToolName(definition.Name)
+	if err != nil {
+		log.Fatalf("invalid tool name")
+	}
+
 	return &Config[GermanGreetingArgs]{
-		Definition: &mcp.Tool{
-			Name:        "german_greeting",
-			Description: "Says \"Moin moin\" to someone by name",
-		},
-		Call: GermanGreeting,
+		Definition: &definition,
+		Call:       GermanGreeting,
 	}
 }
 
