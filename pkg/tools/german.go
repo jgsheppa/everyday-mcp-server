@@ -38,3 +38,4 @@ func AddGermanTool(server *mcp.Server) {
 	tool := NewGermanGreetingTool()
 	mcp.AddTool(server, tool.Definition, tool.ToolCall)
 }
+
