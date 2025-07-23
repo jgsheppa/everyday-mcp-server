@@ -1,53 +1,37 @@
+version: "2"
 run:
-  timeout: 5m
-  go: "1.24"
-
-linters-settings:
-  gocyclo:
-    min-complexity: 15
-  dupl:
-    threshold: 100
-  goconst:
-    min-len: 2
-    min-occurrences: 2
-  misspell:
-    locale: US
-  lll:
-    line-length: 140
-  goimports:
-    local-prefixes: github.com/jgsheppa/everyday-mcp-server
-
+  concurrency: 4
+  tests: true
 linters:
-  disable-all: true
   enable:
     - bodyclose
-    - dupl
-    - errcheck
-    - copyloopvar
-    - goconst
-    - gocyclo
-    - gofmt
-    - goimports
-    - mnd
-    - goprintffuncname
+    - gocritic
     - gosec
-    - gosimple
-    - govet
-    - ineffassign
-    - lll
+    - makezero
     - misspell
     - nakedret
-    - staticcheck
-    - stylecheck
-    - typecheck
-    - unconvert
-    - unparam
-    - unused
-    - whitespace
-
-issues:
-  exclude-rules:
-    - path: _test\.go
-      linters:
-        - mnd
-        - lll
+    - revive
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+  settings:
+    staticcheck:
+      checks:
+        - "all"
+        - -QF1008
+        - -ST1000
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
