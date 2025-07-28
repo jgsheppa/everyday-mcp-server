@@ -68,7 +68,7 @@ func postToGoogleChat(message string) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("google Chat API returned status %d", resp.StatusCode)
+		return fmt.Errorf("google chat api returned status %d", resp.StatusCode)
 	}
 
 	return nil
