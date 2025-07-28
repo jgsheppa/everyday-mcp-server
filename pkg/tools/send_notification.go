@@ -56,12 +56,16 @@ func postToGoogleChat(message string) error {
 		return err
 	}
 
-	webhookURL := os.Getenv("GOOGLE_CHAT_WEBHOOK_URL")
-	if webhookURL == "" {
+	url := os.Getenv("GOOGLE_CHAT_WEBHOOK_URL")
+	if url == "" {
 		return fmt.Errorf("GOOGLE_CHAT_WEBHOOK_URL environment variable is not set")
 	}
+	if !strings.HasPrefix(url, "https://chat.googleapis.com/v1/spaces/") {
+		return fmt.Errorf("invalid Google Chat webhook URL format")
+	}
 
-	resp, err := http.Post(webhookURL, "application/json", strings.NewReader(string(jsonData)))
+	// #nosec G107 - URL is validated to be Google Chat webhook format
+	resp, err := http.Post(url, "application/json", strings.NewReader(string(jsonData)))
 	if err != nil {
 		return err
 	}
