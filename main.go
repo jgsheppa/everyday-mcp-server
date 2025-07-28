@@ -15,8 +15,8 @@ func main() {
 		Version: "1.1.0",
 	}, nil)
 
-	tools.AddFrenchTool(server)
 	tools.AddGermanTool(server)
+	tools.AddNotificationTool(server)
 
 	if err := server.Run(context.Background(), mcp.NewStdioTransport()); err != nil {
 		log.Fatal(err)
