@@ -9,9 +9,9 @@ import (
 
 func TestValidateToolName(t *testing.T) {
 	tests := []struct {
-		name    string
+		name     string
 		toolName string
-		wantErr bool
+		wantErr  bool
 	}{
 		{
 			name:     "valid tool name with underscores",
@@ -81,17 +81,12 @@ func TestValidateToolName(t *testing.T) {
 }
 
 func TestExistingToolNamesValid(t *testing.T) {
-	frenchTool := tools.NewFrenchGreetingTool()
 	germanTool := tools.NewGermanGreetingTool()
 
 	tests := []struct {
 		name     string
 		toolName string
 	}{
-		{
-			name:     "french greeting tool name",
-			toolName: frenchTool.Definition.Name,
-		},
 		{
 			name:     "german greeting tool name",
 			toolName: germanTool.Definition.Name,

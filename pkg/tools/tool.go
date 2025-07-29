@@ -11,6 +11,7 @@ import (
 var toolNameRegex = regexp.MustCompile(`^[a-zA-Z0-9_]{1,64}$`)
 
 type Config[T any] struct {
+	Error      error
 	Definition *mcp.Tool
 	Call       func(ctx context.Context, ss *mcp.ServerSession, params *mcp.CallToolParamsFor[T]) (*mcp.CallToolResult, error)
 }
