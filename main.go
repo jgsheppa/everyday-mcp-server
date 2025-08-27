@@ -17,6 +17,8 @@ func main() {
 
 	tools.AddGermanTool(server)
 	tools.AddNotificationTool(server)
+	tools.AddCompressTool(server)
+	tools.AddYearsSinceTool(server)
 
 	if err := server.Run(context.Background(), mcp.NewStdioTransport()); err != nil {
 		log.Fatal(err)
